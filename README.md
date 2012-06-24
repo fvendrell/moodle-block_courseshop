@@ -10,3 +10,18 @@ moodle-block_courseshop
 
 A complete commercial front-end for Moodle
 
+Integrates : 
+
+* Customer base
+* Billing back-office
+* Multiple caralog instances (editable)
+* Product bundles
+* Product assemblies (sets)
+* Front end shopping cart
+* Selectable payment mode (multiple modes)
+** Paypal
+** Offline
+** Mercanet BNP/Paribas
+* Automated Moodle data handlers on purchase validation  
+ * 
+
