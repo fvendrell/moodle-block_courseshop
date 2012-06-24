@@ -1,0 +1,2 @@
+<h5>No bill attachements</h5>
+<p>You may attach documents to this bill. Use the link below. You may also attach one (unique) dicument to each bill item. Use the attach icon (<img src="images/icons/attach.gif">) on the item order line. </p>

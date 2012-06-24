@@ -1,0 +1,37 @@
+<h2>Moodle Courseshop</h2>
+<h3>States for orders and bills</h3>
+
+<p>Orders and bills have a lifecycle driven by a state and transition engine.</p>
+<p>following states are used:</p>
+
+<dl>
+	<dt>Working (WORKING)</dt>
+<dd>When a backoffice operator creates manually an order, it takes the Working state.</dd>
+	
+	<dt>Pending orders (PENDING)</dt>
+<dd>Orders have been confirmed by customer, but payement used is offline and payement reception
+must be handled manually by a back-office operator.</dd>
+
+	<dt>Gelées (DELAYED)</dt>
+<dd>Orders sent by online customers but not confirmed will remain in DELAYED status.</dd>
+
+	<dt>Soldout bills (SOLDOUT)</dt>
+<dd>Bill have been sold out integrally because of using an online immediate payment method, or because having been so marked
+by a back-office operator after physical payement reception.</dd>
+	
+	<dt>Completed bills (COMPLETE)</dt>
+<dd>Order has been payed and realized (in any way, automatically by playing handlers, or
+	manually shipped and sent to customer in case of physical goods.</dd>
+	
+	<dt>Cancelled orders (CANCELLED)</dt>
+<dd>Back-office operators an cancel orders that have not been entered into real accountance
+	path.</dd>
+
+	<dt>Failed payement bills (FAILED)</dd>
+<dd>This bills mark online payement failed process.</dd>
+
+	<dt>Payback orders (PAYBACK)</dd>
+<dd>Orders abusively invoiced or in case of possibility of the customer to revert his purchase might
+	be marked as payback orders at benefit of the customer.</dd>
+
+</dl>

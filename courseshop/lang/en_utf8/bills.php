@@ -1,0 +1,54 @@
+<?php
+
+$string['_addbill'] = 'Add bill';
+$string['abstract'] = 'Abstract';
+$string['actualstate'] = 'Current state';
+$string['allowingtax'] = 'allowing tax';
+$string['allowtax'] = 'Allow tax';
+$string['assignedto'] = 'Assigned to';
+$string['backto'] = 'Back to:';
+$string['bill'] = 'Bill:';
+$string['bill_ALLs'] = 'All';
+$string['bill_CANCELLEDs'] = 'Bill cancelled';
+$string['bill_DELAYEDs'] = 'Bill delayed';
+$string['bill_PARTIALs'] = 'Partial bill';
+$string['bill_PAYBACKs'] = 'Bill payback';
+$string['bill_PENDINGs'] = 'Pending bill';
+$string['bill_RECOVERINGs'] = 'Bill recovering';
+$string['bill_SOLDOUTs'] = 'Bill soldout';
+$string['bill_WORKINGs'] = 'Bill working';
+$string['bill_assignation'] = 'bill assignation';
+$string['billstates'] = 'Bill states';
+$string['billtaxes'] = 'Total taxes:';
+$string['billtitle'] = 'Title';
+$string['choosecustomer'] = 'Choose a customer';
+$string['chooseuser'] = 'Choose an user';
+$string['customer_account'] = 'the bill assignation to a customer account';
+$string['deadline'] = 'Deadline';
+$string['expectedpaiement'] = 'Expected date for payment';
+$string['generateacode'] = 'Generate a code';
+$string['goto'] = 'Go to:';
+$string['lettering'] = 'Lettering';
+$string['letteringupdated'] = 'Lettering updated';
+$string['nobillattachements'] = 'No document attached.';
+$string['nobills'] = 'No bills';
+$string['noletteringaspending'] = 'This is a pending order. <br/>Only a bill can be lettered.';
+$string['nocodegenerated'] = 'No transaction code has been generated (manual bills).';
+$string['paiedamount'] = 'Paied amount';
+$string['paimentcode'] = 'Bill code:';
+$string['paymodes'] = 'Paymode';
+$string['status'] = 'Status';
+$string['seethecustomerdetail'] = 'See customer details';
+$string['timetodo'] = 'Date to complete:';
+$string['totalTTC'] = 'Total tax included:';
+$string['totaltex'] = 'Total wt taxes:';
+$string['totalti'] = 'Total:';
+$string['transaction'] = 'Transaction';
+$string['uniqueletteringfailure'] = '<a href=\"$a\">Another bill</a> uses already this lettering code. ';
+$string['unittex'] = 'Unit wt taxes:';
+$string['unittex'] = 'Unit wt taxes:';
+$string['updatelettering'] = 'Update';
+$string['user'] = 'Choose a customer account or an user account';
+$string['worktype'] = 'Worktype';
+
+

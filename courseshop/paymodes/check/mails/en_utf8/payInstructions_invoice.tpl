@@ -1,0 +1,1 @@
+To confirm and make this order being processed for you, print the invoice, and to send it by terrestrial mail with your check. You'll get a confirmation mail advice when your products are ready.

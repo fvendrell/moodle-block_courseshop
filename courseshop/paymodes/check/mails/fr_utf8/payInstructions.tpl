@@ -1,0 +1,1 @@
+Pour passer commande, il vous suffit d'imprimer le bon de commande ci-après, et de nous l'envoyer par courrier postal avec votre chèque de règlement. Votre commande vous sera envoyée dès réception.

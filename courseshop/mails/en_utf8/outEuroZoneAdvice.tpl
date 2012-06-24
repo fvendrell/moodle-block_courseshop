@@ -1,0 +1,1 @@
+<b>Beware :</b> check payment nor swift payment can be accepted out of Euro zone. Thank you for your comprehension.</p>

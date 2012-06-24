@@ -1,0 +1,1 @@
+<b>Attention :</b> en raison des frais bancaires prohibitifs, nous ne pouvons accepter ni  les chèques hors zone euro, ni les règlements par swift. Merci de votre compréhension.

@@ -1,0 +1,1 @@
+To confirm your order, you have to pay via a bank transfer on the indicated account. Your order will be sent when we get a bank notification, confirming your transfer.

@@ -1,0 +1,1 @@
+Pour passer votre commande, il vous suffit d'effectuer directement votre règlement par virement bancaire (<b>sauf swift</b>) sur le compte indiqué, et de valider la facture proforma ci-dessus. Votre commande sera exécutée dès notification de votre virement par notre banque.

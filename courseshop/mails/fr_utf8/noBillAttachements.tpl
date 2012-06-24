@@ -1,0 +1,2 @@
+<h5>Pas d'éléments attachés</h5>
+<p>Vous pouvez attacher des fichiers ou autre documents à la facture. Utilisez le lien ci-dessous. Vous pouvez également attacher un fichier ou document (un seul) à chacun des éléments de facture. Utilisez l'icone <img src="images/icons/attach.gif"> de la ligne de commandes des entrées de facture. 

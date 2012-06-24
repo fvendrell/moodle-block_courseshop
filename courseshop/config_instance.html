@@ -1,0 +1,84 @@
+<?php
+require_once $CFG->dirroot.'/blocks/courseshop/paymodes/paymode.class.php';
+?>
+
+<fieldset id="connection">
+<legend><?php print_string('shop', 'block_courseshop') ?></legend>
+<table cellpadding="9" cellspacing="0" width="90%">
+<tr valign="top">
+    <td align="right"><b><?php print_string('configtitle', 'block_courseshop'); ?>:</b></td>
+    <td align="left">
+        <input type="text" name="blocktitle" size="30" value="<?php echo isset($this->config->blocktitle)? p($this->config->blocktitle) : '' ; ?>" />
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right"><b><?php print_string('shopcaption', 'block_courseshop'); ?>:</b></td>
+    <td align="left">
+        <input type="text" name="shopcaption" size="30" value="<?php echo isset($this->config->shopcaption)? p($this->config->shopcaption) : '' ; ?>" />
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right"><b><?php print_string('shopdescription', 'block_courseshop'); ?>:</b></td>
+    <td align="left">
+        <textarea name="shopdescription" ><?php echo isset($this->config->shopcaption)? p($this->config->shopcaption) : '' ; ?></textarea>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right"><b><?php print_string('catalogue', 'block_courseshop'); ?>:</b></td>
+    <td align="left">
+        <?php
+		    if ($cats = get_records('courseshop_catalog')){
+                foreach($cats as $cat){
+					$catoptions[$cat->id] = $cat->name;
+				}
+                choose_from_menu($catoptions, 'catalogue', @$this->config->catalogue, 'choose');
+            } else {
+                print_string('nocatalogs', 'block_courseshop');
+                $context = get_context_instance(CONTEXT_BLOCK, $this->instance->id);
+                if (has_capability('block/courseshop:salesadmin', $context)){
+                    $gotoadminstr = get_string('gotoadminlink', 'block_courseshop');
+                    echo "<br/><a href=\"{$CFG->wwwroot}/blocks/courseshop/index.php\">$gotoadminstr</a>";
+                }
+            }
+        ?>
+    </td>
+</tr>
+
+<tr valign="top">
+    <td align="right"><b><?php print_string('enablepaymodes', 'block_courseshop'); ?>:</b></td>
+    <td align="left">
+		
+	<?php
+
+		//Checking paymodes availability and creating checkboxes	
+		$paymodes = courseshop_paymode::courseshop_get_plugins($this);
+		foreach($paymodes as $pm){
+			if ($pm->enabled)
+				$pm->print_instance_config();
+		}	 
+		print_string('carefullchoice', 'block_courseshop');
+	?>
+    </td> 
+</tr>
+
+<tr valign="top">
+    <td align="right"><b><?php print_string('customerorganisationrequired', 'block_courseshop'); ?>:</b></td>
+    <td align="left">
+    	<?php
+    	$yeschecked = (@$this->config->customerorganisationrequired) ? 'checked="checked"' : '' ;
+    	$nochecked = (@$this->config->customerorganisationrequired) ? 'checked="checked"' : '' ;
+    	?>
+    	<input type="radio" name="customerorganisationrequired" value="0" <?php echo $nochecked ?> /> <?php print_string('no') ?>
+    	- <input type="radio" name="customerorganisationrequired" value="1" <?php echo $yeschecked ?> /> <?php print_string('yes') ?>
+    </td>
+</tr>
+
+
+<tr>
+    <td colspan="6" align="center">
+        <input type="submit" value="<?php print_string('savechanges') ?>" />
+    </td>
+</tr>
+</table>
+</fieldset>
+</table>

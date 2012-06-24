@@ -1,0 +1,2 @@
+<p>Your paiment has been confirmed by your payment operator. We have processed to the realisation of your products.</p>
+<p>If you fail to access to your training material, contact our sales service <%%SUPPORT%%>.</p>

@@ -1,0 +1,36 @@
+<h2>Boutique en ligne Moodle</h2>
+<h3>Etats des factures/commandes</h3>
+
+<p>Les factures/commandes ont un cycle de vie déterminé par un moteur d'états et de transitions.</p>
+<p>Les état possibles sont les suivants :</p>
+
+<dl>
+	<dt>En travail (WORKING)</dt>
+<dd>Les factures en travail sont des factures entrées manuellement par les opérateurs
+	de la boutique, et non encore validées.</dd>
+	
+	<dt>Commandes à réaliser (PENDING)</dt>
+<dd>Les factures à réaliser ont été confirmées, mais ont un mode de paiement et de prodution non 
+	automatique qui doit être supervisé par les opérateurs de la boutique.</dd>
+
+	<dt>Gelées (DELAYED)</dt>
+<dd>Les factures gelées sont des bons de commande non confirmés par les utilisateurs.</dd>
+
+	<dt>Factures payées (SOLDOUT)</dt>
+<dd>Les factures ont été intégralement payées, soit par un procédé automatique en ligne soit 
+	par marquage manuel par les opérateurs de la boutique (après contrôle de réceptino de paiement).</dd>
+	
+	<dt>Factures réalisées (COMPLETE)</dt>
+<dd>Les factures payées ont été produites, automatiquement, par activation des gestionnaires
+	de production des produits ou marqués manuellement comme telles si la production n'est pas numérique.</dd>
+	
+	<dt>Factures annulées (CANCELLED)</dt>
+<dd>Les factures annulée par l'opérateur (mise à l'écart des factures gelées).</dd>
+
+	<dt>Factures en échec paiement (FAILED)</dd>
+<dd>Les factures annulée suite à un échec du paiement en ligne du client.</dd>
+
+	<dt>Avoirs clients (PAYBACK)</dd>
+<dd>Des factures soldées peuvent se transformer en avoir clients si un rembourement doit être fait.</dd>
+
+</dl>

@@ -1,0 +1,1 @@
+<p>Suivez la procédure Paybox jusqu'à son terme. Nous vous réservons une facture en fin de paiement.

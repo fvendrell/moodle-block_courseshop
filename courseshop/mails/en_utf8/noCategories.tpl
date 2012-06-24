@@ -1,0 +1,1 @@
+<p>No categories defined in the catalog.</p> 

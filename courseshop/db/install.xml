@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="blocks/courseshop/db" VERSION="20120518" COMMENT="XMLDB file for Moodle blocks/courseshop"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="courseshop_catalog" COMMENT="courseshop_catalog table retrofitted from MySQL" NEXT="courseshop_catalogitem">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="11" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" NEXT="name"/>
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="id" NEXT="description"/>
+        <FIELD NAME="description" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="name" NEXT="salesconditions"/>
+        <FIELD NAME="salesconditions" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="description" NEXT="groupid"/>
+        <FIELD NAME="groupid" TYPE="int" LENGTH="4" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" ENUM="false" PREVIOUS="salesconditions"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="nom_unique"/>
+        <KEY NAME="nom_unique" TYPE="unique" FIELDS="name" PREVIOUS="primary"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="courseshop_catalogitem" COMMENT="coursehop_catalogitem table retrofitted from MySQL" PREVIOUS="courseshop_catalog" NEXT="courseshop_catalogcategory">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="11" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" NEXT="catalogid"/>
+        <FIELD NAME="catalogid" TYPE="int" LENGTH="4" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="id" NEXT="code"/>
+        <FIELD NAME="code" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="catalogid" NEXT="shortname"/>
+        <FIELD NAME="shortname" TYPE="char" LENGTH="30" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="code" NEXT="name"/>
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="shortname" NEXT="description"/>
+        <FIELD NAME="description" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="name" NEXT="price1"/>
+        <FIELD NAME="price1" TYPE="number" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0.00" SEQUENCE="false" ENUM="false" DECIMALS="3" PREVIOUS="description" NEXT="price2"/>
+        <FIELD NAME="price2" TYPE="number" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0.00" SEQUENCE="false" ENUM="false" DECIMALS="3" PREVIOUS="price1" NEXT="price3"/>
+        <FIELD NAME="price3" TYPE="number" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0.00" SEQUENCE="false" ENUM="false" DECIMALS="3" PREVIOUS="price2" NEXT="taxcode"/>
+        <FIELD NAME="taxcode" TYPE="char" LENGTH="8" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="price3" NEXT="stock"/>
+        <FIELD NAME="stock" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="taxcode" NEXT="sold"/>
+        <FIELD NAME="sold" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="stock" NEXT="categoryid"/>
+        <FIELD NAME="categoryid" TYPE="int" LENGTH="6" NOTNULL="false" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="sold" NEXT="status"/>
+        <FIELD NAME="status" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="AVAILABLE" SEQUENCE="false" ENUM="true" ENUMVALUES="'WORKING', 'PREVIEW', 'AVAILABLE', 'AVAILABLEINTERNAL', 'SUSPENDED', 'PROVIDING', 'ABANDONNED'" PREVIOUS="categoryid" NEXT="leafleturl"/>
+        <FIELD NAME="leafleturl" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="status" NEXT="image"/>
+        <FIELD NAME="image" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="leafleturl" NEXT="thumb"/>
+        <FIELD NAME="thumb" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="image" NEXT="notes"/>
+        <FIELD NAME="notes" TYPE="text" LENGTH="small" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="thumb" NEXT="isset"/>
+        <FIELD NAME="isset" TYPE="char" LENGTH="1" NOTNULL="true" DEFAULT="0" SEQUENCE="false" ENUM="true" ENUMVALUES="'0', '1', 'B'" PREVIOUS="notes" NEXT="setid"/>
+        <FIELD NAME="setid" TYPE="int" LENGTH="6" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" ENUM="false" PREVIOUS="isset" NEXT="showsdescriptioninset"/>
+        <FIELD NAME="showsdescriptioninset" TYPE="int" LENGTH="1" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="setid" NEXT="showsnameinset"/>
+        <FIELD NAME="showsnameinset" TYPE="int" LENGTH="1" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="showsdescriptioninset" NEXT="isoptioninbundle"/>
+        <FIELD NAME="isoptioninbundle" TYPE="int" LENGTH="1" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="showsnameinset" NEXT="bundleshowscontent"/>
+        <FIELD NAME="bundleshowscontent" TYPE="char" LENGTH="7" NOTNULL="true" DEFAULT="DEFAULT" SEQUENCE="false" ENUM="true" ENUMVALUES="'0', '1', 'DEFAULT'" PREVIOUS="isoptioninbundle" NEXT="productiondata"/>
+        <FIELD NAME="productiondata" TYPE="text" LENGTH="small" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="bundleshowscontent" NEXT="maxdeliveryquant"/>
+        <FIELD NAME="maxdeliveryquant" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="productiondata" NEXT="onlyforloggedin"/>
+        <FIELD NAME="onlyforloggedin" TYPE="int" LENGTH="2" NOTNULL="true" UNSIGNED="false" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="maxdeliveryquant" NEXT="requireddata"/>
+        <FIELD NAME="requireddata" TYPE="text" LENGTH="small" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="describes completary data to ask to user" PREVIOUS="onlyforloggedin" NEXT="enablehandler"/>
+        <FIELD NAME="enablehandler" TYPE="char" LENGTH="30" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="enabled pre and post purchase handler" PREVIOUS="requireddata" NEXT="handlerparams"/>
+        <FIELD NAME="handlerparams" TYPE="char" LENGTH="80" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="give params to handler" PREVIOUS="enablehandler"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="unique_code_in_catalogue"/>
+        <KEY NAME="unique_code_in_catalogue" TYPE="unique" FIELDS="catalogid, code" PREVIOUS="primary"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="categoryid" UNIQUE="false" FIELDS="categoryid" NEXT="catalog_index"/>
+        <INDEX NAME="catalog_index" UNIQUE="false" FIELDS="catalogid" PREVIOUS="categoryid"/>
+      </INDEXES>
+    </TABLE>
+    <TABLE NAME="courseshop_catalogcategory" COMMENT="courseshop_catalogcategory table retrofitted from MySQL" PREVIOUS="courseshop_catalogitem" NEXT="courseshop_catalogshipping">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="11" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" NEXT="catalogid"/>
+        <FIELD NAME="catalogid" TYPE="int" LENGTH="4" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="id" NEXT="parentid"/>
+        <FIELD NAME="parentid" TYPE="int" LENGTH="11" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="catalogid" NEXT="name"/>
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="parentid" NEXT="description"/>
+        <FIELD NAME="description" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="name"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="catalogid" UNIQUE="false" FIELDS="catalogid, parentid" NEXT="parent_ix"/>
+        <INDEX NAME="parent_ix" UNIQUE="false" FIELDS="parentid" PREVIOUS="catalogid"/>
+      </INDEXES>
+    </TABLE>
+    <TABLE NAME="courseshop_catalogshipping" COMMENT="courseshop_catalogshipping table retrofitted from MySQL" PREVIOUS="courseshop_catalogcategory" NEXT="courseshop_catalogshipzone">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="11" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" NEXT="productcode"/>
+        <FIELD NAME="productcode" TYPE="char" LENGTH="32" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="id" NEXT="zoneid"/>
+        <FIELD NAME="zoneid" TYPE="int" LENGTH="4" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="productcode" NEXT="value"/>
+        <FIELD NAME="value" TYPE="number" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0.00" SEQUENCE="false" ENUM="false" DECIMALS="3" PREVIOUS="zoneid" NEXT="formula"/>
+        <FIELD NAME="formula" TYPE="char" LENGTH="64" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="value" NEXT="a"/>
+        <FIELD NAME="a" TYPE="number" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0.00" SEQUENCE="false" ENUM="false" DECIMALS="3" PREVIOUS="formula" NEXT="b"/>
+        <FIELD NAME="b" TYPE="number" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0.00" SEQUENCE="false" ENUM="false" DECIMALS="3" PREVIOUS="a" NEXT="c"/>
+        <FIELD NAME="c" TYPE="number" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0.00" SEQUENCE="false" ENUM="false" DECIMALS="3" PREVIOUS="b"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="shipping_pk" TYPE="primary" FIELDS="id" NEXT="unique_prod_zone"/>
+        <KEY NAME="unique_prod_zone" TYPE="unique" FIELDS="productcode, zoneid" PREVIOUS="shipping_pk"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="courseshop_catalogshipzone" COMMENT="courseshop_catalogshipzone table retrofitted from MySQL" PREVIOUS="courseshop_catalogshipping" NEXT="courseshop_customer">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="11" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" NEXT="catalogid"/>
+        <FIELD NAME="catalogid" TYPE="int" LENGTH="4" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="id" NEXT="zonecode"/>
+        <FIELD NAME="zonecode" TYPE="char" LENGTH="4" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="catalogid" NEXT="description"/>
+        <FIELD NAME="description" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="zonecode" NEXT="billscopeamount"/>
+        <FIELD NAME="billscopeamount" TYPE="number" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0.00" SEQUENCE="false" ENUM="false" DECIMALS="3" PREVIOUS="description" NEXT="taxid"/>
+        <FIELD NAME="taxid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="billscopeamount" NEXT="applicability"/>
+        <FIELD NAME="applicability" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="taxid"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="unique_zone_in_catalog"/>
+        <KEY NAME="unique_zone_in_catalog" TYPE="unique" FIELDS="catalogid, zonecode" PREVIOUS="primary"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="courseshop_customer" COMMENT="courseshop_customer table retrofitted from MySQL" PREVIOUS="courseshop_catalogshipzone" NEXT="courseshop_bill">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" NEXT="firstname"/>
+        <FIELD NAME="firstname" TYPE="char" LENGTH="40" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="id" NEXT="lastname"/>
+        <FIELD NAME="lastname" TYPE="char" LENGTH="40" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="firstname" NEXT="address1"/>
+        <FIELD NAME="address1" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="lastname" NEXT="address2"/>
+        <FIELD NAME="address2" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="address1" NEXT="zip"/>
+        <FIELD NAME="zip" TYPE="char" LENGTH="6" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="address2" NEXT="email"/>
+        <FIELD NAME="email" TYPE="char" LENGTH="80" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="zip" NEXT="city"/>
+        <FIELD NAME="city" TYPE="char" LENGTH="40" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="email" NEXT="country"/>
+        <FIELD NAME="country" TYPE="char" LENGTH="2" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="city" NEXT="organisation"/>
+        <FIELD NAME="organisation" TYPE="char" LENGTH="64" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="country" NEXT="hasaccount"/>
+        <FIELD NAME="hasaccount" TYPE="int" LENGTH="11" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="organisation" NEXT="timecreated"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="11" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="hasaccount"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="courseshop_bill" COMMENT="courseshop_bill table retrofitted from MySQL" PREVIOUS="courseshop_customer" NEXT="courseshop_billitem">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="11" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" NEXT="idnumber"/>
+        <FIELD NAME="idnumber" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="id" NEXT="ordering"/>
+        <FIELD NAME="ordering" TYPE="int" LENGTH="11" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" ENUM="false" PREVIOUS="idnumber" NEXT="userid"/>
+        <FIELD NAME="userid" TYPE="char" LENGTH="50" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="ordering" NEXT="title"/>
+        <FIELD NAME="title" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="userid" NEXT="worktype"/>
+        <FIELD NAME="worktype" TYPE="char" LENGTH="5" NOTNULL="true" DEFAULT="PACK" SEQUENCE="false" ENUM="true" ENUMVALUES="'PROD', 'PACK', 'OTHER'" PREVIOUS="title" NEXT="status"/>
+        <FIELD NAME="status" TYPE="char" LENGTH="10" NOTNULL="true" DEFAULT="PENDING" SEQUENCE="false" ENUM="true" ENUMVALUES="'PENDING', 'PAYBACK', 'PARTIAL', 'SOLDOUT', 'DELAYED', 'RECOVERING', 'CANCELLED', 'WORKING', 'COMPLETE', 'FAILED'" PREVIOUS="worktype" NEXT="emissiondate"/>
+        <FIELD NAME="emissiondate" TYPE="int" LENGTH="11" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" ENUM="false" PREVIOUS="status" NEXT="lastactiondate"/>
+        <FIELD NAME="lastactiondate" TYPE="int" LENGTH="11" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" ENUM="false" PREVIOUS="emissiondate" NEXT="assignedto"/>
+        <FIELD NAME="assignedto" TYPE="char" LENGTH="16" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="lastactiondate" NEXT="timetodo"/>
+        <FIELD NAME="timetodo" TYPE="float" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="assignedto" NEXT="untaxedamount"/>
+        <FIELD NAME="untaxedamount" TYPE="number" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0.00" SEQUENCE="false" ENUM="false" DECIMALS="3" PREVIOUS="timetodo" NEXT="taxes"/>
+        <FIELD NAME="taxes" TYPE="number" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0.00" SEQUENCE="false" ENUM="false" DECIMALS="3" PREVIOUS="untaxedamount" NEXT="amount"/>
+        <FIELD NAME="amount" TYPE="number" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0.00" SEQUENCE="false" ENUM="false" DECIMALS="3" PREVIOUS="taxes" NEXT="currency"/>
+        <FIELD NAME="currency" TYPE="char" LENGTH="16" NOTNULL="true" DEFAULT="EUROS" SEQUENCE="false" ENUM="true" ENUMVALUES="'DOLLARS', 'CANADIAN DOLLARS', 'EUROS', 'POUNDS', 'YENS'" PREVIOUS="amount" NEXT="convertedamount"/>
+        <FIELD NAME="convertedamount" TYPE="number" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0.00" SEQUENCE="false" ENUM="false" DECIMALS="3" PREVIOUS="currency" NEXT="transactionid"/>
+        <FIELD NAME="transactionid" TYPE="char" LENGTH="40" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="convertedamount" NEXT="onlinetransactionid"/>
+        <FIELD NAME="onlinetransactionid" TYPE="char" LENGTH="128" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="transactionid" NEXT="expectedpaiement"/>
+        <FIELD NAME="expectedpaiement" TYPE="text" LENGTH="small" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="onlinetransactionid" NEXT="paiedamount"/>
+        <FIELD NAME="paiedamount" TYPE="number" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0.00" SEQUENCE="false" ENUM="false" DECIMALS="3" PREVIOUS="expectedpaiement" NEXT="paymode"/>
+        <FIELD NAME="paymode" TYPE="char" LENGTH="16" NOTNULL="true" DEFAULT="CHK" SEQUENCE="false" ENUM="false" PREVIOUS="paiedamount" NEXT="ignoretax"/>
+        <FIELD NAME="ignoretax" TYPE="int" LENGTH="1" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="paymode" NEXT="productiondata"/>
+        <FIELD NAME="productiondata" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="ignoretax" NEXT="paymentfee"/>
+        <FIELD NAME="paymentfee" TYPE="number" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0.00" SEQUENCE="false" ENUM="false" DECIMALS="3" PREVIOUS="productiondata"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="transactional_ordering"/>
+        <KEY NAME="transactional_ordering" TYPE="unique" FIELDS="transactionid" PREVIOUS="primary" NEXT="unique_ordering"/>
+        <KEY NAME="unique_ordering" TYPE="unique" FIELDS="ordering" PREVIOUS="transactional_ordering"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="courseshop_billitem" COMMENT="courseshop_billitem table retrofitted from MySQL" PREVIOUS="courseshop_bill" NEXT="courseshop_tax">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="11" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" NEXT="billid"/>
+        <FIELD NAME="billid" TYPE="int" LENGTH="11" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="id" NEXT="ordering"/>
+        <FIELD NAME="ordering" TYPE="int" LENGTH="11" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" PREVIOUS="billid" NEXT="type"/>
+        <FIELD NAME="type" TYPE="char" LENGTH="7" NOTNULL="true" DEFAULT="BILLING" SEQUENCE="false" ENUM="true" ENUMVALUES="'BILLING', 'COMMENT'" PREVIOUS="ordering" NEXT="itemcode"/>
+        <FIELD NAME="itemcode" TYPE="char" LENGTH="15" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="type" NEXT="abstract"/>
+        <FIELD NAME="abstract" TYPE="char" LENGTH="80" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="itemcode" NEXT="description"/>
+        <FIELD NAME="description" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="abstract" NEXT="delay"/>
+        <FIELD NAME="delay" TYPE="float" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" ENUM="false" PREVIOUS="description" NEXT="unitcost"/>
+        <FIELD NAME="unitcost" TYPE="number" LENGTH="10" NOTNULL="true" UNSIGNED="false" DEFAULT="0.00" SEQUENCE="false" ENUM="false" DECIMALS="3" PREVIOUS="delay" NEXT="quantity"/>
+        <FIELD NAME="quantity" TYPE="float" NOTNULL="true" UNSIGNED="true" DEFAULT="1" SEQUENCE="false" ENUM="false" PREVIOUS="unitcost" NEXT="totalprice"/>
+        <FIELD NAME="totalprice" TYPE="number" LENGTH="10" NOTNULL="false" UNSIGNED="false" DEFAULT="0.00" SEQUENCE="false" ENUM="false" DECIMALS="2" PREVIOUS="quantity" NEXT="taxcode"/>
+        <FIELD NAME="taxcode" TYPE="char" LENGTH="8" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="totalprice" NEXT="bundleid"/>
+        <FIELD NAME="bundleid" TYPE="int" LENGTH="6" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" ENUM="false" PREVIOUS="taxcode" NEXT="customerdata"/>
+        <FIELD NAME="customerdata" TYPE="text" LENGTH="small" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="bundleid"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="unique_ordering" UNIQUE="false" FIELDS="billid, ordering" NEXT="bill_ix"/>
+        <INDEX NAME="bill_ix" UNIQUE="false" FIELDS="billid" PREVIOUS="unique_ordering"/>
+      </INDEXES>
+    </TABLE>
+    <TABLE NAME="courseshop_tax" COMMENT="courseshop_customer table retrofitted from MySQL" PREVIOUS="courseshop_billitem" NEXT="flowcontrol">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" NEXT="country"/>
+        <FIELD NAME="country" TYPE="char" LENGTH="2" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="id" NEXT="title"/>
+        <FIELD NAME="title" TYPE="char" LENGTH="128" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="country" NEXT="ratio"/>
+        <FIELD NAME="ratio" TYPE="float" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" PREVIOUS="title" NEXT="formula"/>
+        <FIELD NAME="formula" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="ratio"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="flowcontrol" COMMENT="flowcontrol table retrofitted from MySQL" PREVIOUS="courseshop_tax">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="11" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" NEXT="element"/>
+        <FIELD NAME="element" TYPE="char" LENGTH="16" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="id" NEXT="from"/>
+        <FIELD NAME="from" TYPE="char" LENGTH="16" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="element" NEXT="to"/>
+        <FIELD NAME="to" TYPE="char" LENGTH="16" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="from"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="flow_rule_is_unique"/>
+        <KEY NAME="flow_rule_is_unique" TYPE="unique" FIELDS="element, from, to" PREVIOUS="primary"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+  <STATEMENTS>
+    <STATEMENT NAME="insert flowocdes" TYPE="insert" TABLE="flowcontrol" COMMENT="Initial insert of records on table flowcontrol">
+      <SENTENCES>
+        <SENTENCE TEXT="(element, from, to) VALUES('order', 'WORKING', 'RECEIVED')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('order', 'RECEIVED', 'EXAMINED')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('order', 'EXAMINED', 'QUANTIFIED')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('order', 'RECEIVED', 'QUANTIFIED')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('order', 'QUANTIFIED', 'ANSWERED')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('order', 'ANSWERED', 'EXECUTING')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('order', 'EXECUTING', 'CANCELLED')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('order', 'ANSWERED', 'CANCELLED')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('order', 'ANSWERED', 'WORKING')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('order', 'RECEIVED', 'CANCELLED')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('bill', 'DELAYED', 'PENDING')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('bill', 'DELAYED', 'SOLDOUT')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('bill', 'SOLDOUT', 'PAYBACK')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('bill', 'PENDING', 'PARTIAL')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('bill', 'PARTIAL', 'SOLDOUT')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('bill', 'PARTIAL', 'PAYBACK')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('bill', 'PAYBACK', 'CANCELLED')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('bill', 'PENDING', 'CANCELLED')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('bill', 'WORKING', 'DELAYED')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('bill', 'WORKING', 'PENDING')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('bill', 'WORKING', 'PARTIAL')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('bill', 'WORKING', 'CANCELLED')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('bill', 'PENDING', 'SOLDOUT')" />
+        <SENTENCE TEXT="(element, from, to) VALUES('bill', 'SOLDOUT', 'COMPLETE')" />
+      </SENTENCES>
+    </STATEMENT>
+  </STATEMENTS>
+</XMLDB>

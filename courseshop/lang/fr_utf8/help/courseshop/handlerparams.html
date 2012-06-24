@@ -1,0 +1,33 @@
+﻿<h2>Boutique Moodle en ligne</h2>
+<h3>Paramètres du gestionnaire d'action</h3>
+
+<p>Certains gestionnaires d'action génériques prennent des paramêtres. Ce champ permet de passer des valeurs 
+spécifiques selon l'instance de produit. Par exemple, un gestionnaire d'action générique qui donne l'accès étudiant à un cours
+a besoin de connaitre l'id ou le nom du cours qui est concerné. Ce champ permettra de le spécifier produit par produit.</p>
+
+<p>La forma générale des paramètres est une liste de paramètres nommés "à la façon" d'une URL : 
+<p><code>param1=value1&param2=value2...</code></p>
+
+<h4>Handler générique : Enrolement dans un cours</h4>
+
+<p><b>Paramètres du gestionnaire</b></p>
+
+<p><code>coursename=&lt;%shortname du cours%&gt;</code></p>
+	
+<p>Le nom court du cours étant unique dans Moodle, il ne peut y avoir ambiguité</p>
+
+<p><code>duration=&lt;%duree en jours%&gt;</code></p>
+	
+<p>La durée est effective à partir de la réalisaton dyu gestionnaire</p>
+
+<h4>Handler générique : Création d'un cours</h4>
+
+<p><b>Paramètres du gestionnaire</b></p>
+
+<p><code>template=&lt;%shortname du gabarit%&gt;</code></p>
+	
+<p>Le nom court du cours étant unique dans Moodle, il ne peut y avoir ambiguité</p>
+
+<p><code>duration=&lt;%duree en jours%&gt;</code></p>
+	
+<p>La durée est effective à partir de la réalisaton dyu gestionnaire</p>

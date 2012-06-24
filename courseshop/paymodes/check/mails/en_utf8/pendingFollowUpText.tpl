@@ -1,0 +1,2 @@
+<p>We are awaiting your payment reception to activate your products. You will be notified by mail as soon as it has been processed.</p>
+<p>If your activation seems being late (your standard terrestrial mail delay plus 24 to 48 work hours), pleae contact our sales services <%%SUPPORT%%>.</p>

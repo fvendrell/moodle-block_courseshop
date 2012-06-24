@@ -1,0 +1,2 @@
+<h3>Bienvenue dans l'espace client</h3>
+<p>Vous pouvez dans cet espace accéder à toutes les informations qui vous concernent. Vous pourrez suivre l'historique de vos factures, de vos tickets d'assistance, de l'état de nos opérations vous concernant.

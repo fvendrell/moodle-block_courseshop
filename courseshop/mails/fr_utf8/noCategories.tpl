@@ -1,0 +1,1 @@
+<p>Aucune catégorie n'est définie dans le catalogue. 

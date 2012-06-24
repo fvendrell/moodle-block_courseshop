@@ -1,0 +1,1 @@
+To order, you have to print this document, and to send it with your check. Your order will be send after reception.

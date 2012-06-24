@@ -1,0 +1,1 @@
+Pour confirmer définitivement et faire exécuter cette commande, il vous suffit d'imprimer cette facture proforma, et de nous l'envoyer par courrier postal avec votre chèque de règlement. Votre commande vous sera envoyée dès réception.

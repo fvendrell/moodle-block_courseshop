@@ -1,0 +1,1 @@
+You can choose you paymen mode. Click on the choosen payment method and let the procedure guide you through the process:
