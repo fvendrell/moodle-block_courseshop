@@ -19,9 +19,12 @@ Integrates :
 * Product assemblies (sets)
 * Front end shopping cart
 * Selectable payment mode (multiple modes)
-** Paypal
-** Offline
-** Mercanet BNP/Paribas
-* Automated Moodle data handlers on purchase validation  
- * 
+ * Paypal
+ * Offline
+ * Mercanet BNP/Paribas
+* Automated Moodle data handlers on purchase validation
+* Post-accountancy ID mapping
+* Customer invoice acess
+* Tiketted notifications to salesforce
+* Shipping costs handling
 
